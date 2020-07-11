@@ -66,9 +66,9 @@ class CustomAlertController: UIViewController {
    
    override func loadView() {
       /* view
-       titleLabel
-       descriptionLabel
-       stack
+          titleLabel
+          descriptionLabel
+          stack
        */
       
       
@@ -98,8 +98,10 @@ class CustomAlertController: UIViewController {
       if actions.count > 0 {
          stack.addArrangedSubview(self.buttonsStack)
          
+         // Если 2 элемента, то делаем по горизонтале и занимали по 50% каждый
          if actions.count == 2 {
             buttonsStack.axis = .horizontal
+            buttonsStack.distribution = .fillEqually
          }
          
          for (index, action) in actions.enumerated() {
@@ -121,13 +123,15 @@ class CustomAlertController: UIViewController {
       // Do any additional setup after loading the view.
    }
    
-   @objc func close(_ sender: Any){
+   @objc func close(_ sender: UIButton){
       dismiss(animated: true)
    }
    
    private func makeButton(action: UIAlertAction) -> UIButton {
       let button = UIButton()
       button.setTitle(action.title ?? "", for: .normal)
+      button.layer.cornerRadius = 6
+      button.layer.masksToBounds = false
       
       switch action.style {
       case .default:
