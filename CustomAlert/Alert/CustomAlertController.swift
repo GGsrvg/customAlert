@@ -75,6 +75,7 @@ class CustomAlertController: UIViewController {
       view = UIView()
       view.backgroundColor = .clear
       
+      // задаем блюр
       let blurEffect = UIBlurEffect(style: .extraLight)
       let blurEffectView = UIVisualEffectView(effect: blurEffect)
       blurEffectView.frame = view.bounds
